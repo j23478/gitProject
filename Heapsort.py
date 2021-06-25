@@ -65,3 +65,4 @@ if __name__ == "__main__":
     A = [4,1,3,2,16,9,10,14,8,7]
     
     print(Heapsort(A))
+    print(A)
