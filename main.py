@@ -1,5 +1,3 @@
-#compare sort algorithm time
-
 
 #mange sort algorithm list
 class algorithmList:
@@ -20,10 +18,19 @@ class algorithmList:
 
 
 #select algorithm menu
+import time
 class menu:
     
     def __init__(self, algorithmList):
         self._algorithm_list = algorithmList.algorithm_list
+
+    @staticmethod
+    def run(func, lst):
+        start = time.process_time()
+        result = func(lst)
+        end = time.process_time()
+        return result, end - start
+
 
     def display(self, lst):
         """1. xxxxxxx#
@@ -34,11 +41,12 @@ class menu:
         for i in selectList:
             tempList = lst[:]
             print(self._algorithm_list[int(i)-1][0])
-            print(self._algorithm_list[int(i)-1][1](tempList))
+            result, spend = self.run(self._algorithm_list[int(i)-1][1], tempList)
+            print(f"Result: {result[:10]}.... \nSpending time: {spend}")
             print("=================")
 
 
-#manage algorithm library
+#manage algorithm library dynamic loading
 
 if __name__ == "__main__":
     import Heapsort, Insertion_sort
@@ -46,4 +54,4 @@ if __name__ == "__main__":
     algoList.add("Heap", Heapsort.Heapsort)
     algoList.add("Insert", Insertion_sort.insertion_sort)
     m = menu(algoList)
-    m.display([4,1,3,2,16,9,10,14,8,7])
+    m.display([i for i in range(1000, 1, -1)])
