@@ -32,12 +32,13 @@ class menu:
         return result, end - start
 
 
-    def display(self, lst):
+    def display(self):
         """1. xxxxxxx#
            2. xxxxxxx"""
         joinAlgorithmList = [str(index+1) + ". " +  value[0] for index, value in enumerate(self._algorithm_list)]
         print("\n".join(joinAlgorithmList))
         selectList = input("select sort algorithms : ").split(",")
+        lst = [ int(_) for _ in input("lst: ").split(",")]
         for i in selectList:
             tempList = lst[:]
             print(self._algorithm_list[int(i)-1][0])
@@ -54,4 +55,4 @@ if __name__ == "__main__":
     algoList.add("Heap", Heapsort.Heapsort)
     algoList.add("Insert", Insertion_sort.insertion_sort)
     m = menu(algoList)
-    m.display([i for i in range(1000, 1, -1)])
+    m.display()
