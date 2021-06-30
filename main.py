@@ -49,7 +49,7 @@ class menu:
 #manage algorithm library dynamic loading
 
 if __name__ == "__main__":
-    import Heapsort, Insertion_sort
+    from algorithmList  import Heapsort, Insertion_sort
     algoList = algorithmList()
     algoList.add("Heap", Heapsort.Heapsort)
     algoList.add("Insert", Insertion_sort.insertion_sort)
